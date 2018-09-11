@@ -218,7 +218,7 @@ func (session *Session) innerInsertMulti(rowsSlicePtr interface{}) (int64, error
 			session.engine.QuoteStr(),
 			strings.Join(colMultiPlaces, temp))
 	} else {
-		sql = fmt.Sprintf("INSERT INTO %s (%v%v%v) VALUES (%v)",
+		sql = fmt.Sprintf("INSERT IGNORE INTO %s (%v%v%v) VALUES (%v)",
 			session.engine.Quote(tableName),
 			session.engine.QuoteStr(),
 			strings.Join(colNames, session.engine.QuoteStr()+", "+session.engine.QuoteStr()),
