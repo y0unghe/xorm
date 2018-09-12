@@ -338,7 +338,7 @@ func (session *Session) innerInsert(bean interface{}) (int64, error) {
 	var sqlStr string
 	var tableName = session.statement.TableName()
 	if len(colPlaces) > 0 {
-		sqlStr = fmt.Sprintf("INSERT INTO %s (%v%v%v) VALUES (%v)",
+		sqlStr = fmt.Sprintf("INSERT IGNORE INTO %s (%v%v%v) VALUES (%v)",
 			session.engine.Quote(tableName),
 			session.engine.QuoteStr(),
 			strings.Join(colNames, session.engine.Quote(", ")),
